@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ScCartCheckout } from "./scParts";
 
 // Components
 import Item from "./ShoppingCartItem";
+import { ProductContext } from "../contexts/ProductContext";
+const ShoppingCart = () => {
+  
+    const { cart } = useContext(ProductContext);
 
-const ShoppingCart = (props) => {
-  const getCartTotal = () => {
-    return props.cart
-      .reduce((acc, value) => {
-        return acc + value.price;
-      }, 0)
+    console.log(cart);
+    const getCartTotal = () => {
+    return cart.reduce((acc, value) => {return acc + value.price;}, 0)
       .toFixed(2);
   };
 
   return (
     <div>
-      {props.cart.map((item) => (
+      {cart.map((item) => (
         <Item key={item.id} {...item} />
       ))}
 
