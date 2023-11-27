@@ -19,12 +19,14 @@ function App() {
 
     setCart( [ ...cart, item ] );
   };
+  const removeItem = (id) => {setCart( cart.filter( cartItem  => cartItem.id !== id) );
 
+  };
   return (
     <div className="App">
 
-<ProductContext.Provider value={ { products, cart, addItem } }>
-      <Navigation cart={cart} />
+<ProductContext.Provider value={ { products, cart, addItem, removeItem } }>
+      <Navigation />
 
       {/* Routelar */}
       <main className="content">
