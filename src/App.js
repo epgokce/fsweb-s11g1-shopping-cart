@@ -14,6 +14,10 @@ function App() {
 
   const addItem = (item) => {
     // verilen itemi sepete ekleyin
+    if ( cart.find( cartItem => cartItem.id === item.id ) )
+        return;
+
+    setCart( [ ...cart, item ] );
   };
 
   return (
@@ -27,8 +31,9 @@ function App() {
         <Route exact path="/">
           <Products/>
         </Route>
-
-
+        <Route path="/cart">
+                <ShoppingCart />
+              </Route>
       </main>
       </ProductContext.Provider>
     </div>
