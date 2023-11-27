@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { data } from "./data";
+import { ProductContext } from "./contexts/ProductContext";
 
 // Bileşenler
 import Navigation from "./components/Navigation";
@@ -17,18 +18,19 @@ function App() {
 
   return (
     <div className="App">
+
+<ProductContext.Provider value={ { products, cart, addItem } }>
       <Navigation cart={cart} />
 
       {/* Routelar */}
       <main className="content">
         <Route exact path="/">
-          <Products products={products} addItem={addItem} />
+          <Products/>
         </Route>
 
-        <Route path="/cart">
-          <ShoppingCart cart={cart} />
-        </Route>
+
       </main>
+      </ProductContext.Provider>
     </div>
   );
 }
