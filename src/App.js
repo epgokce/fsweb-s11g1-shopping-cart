@@ -22,7 +22,9 @@ function App() {
     localStorage.setItem( "cart", JSON.stringify( newCart ) );
   };
   const removeItem = (id) => {setCart( cart.filter( cartItem  => cartItem.id !== id) );
-
+    const newCart = cart.filter( cartItem  => cartItem.id !== id)
+    setCart( newCart );
+    localStorage.setItem( "cart", JSON.stringify( newCart ) );
   };
   useEffect( () => {
 
